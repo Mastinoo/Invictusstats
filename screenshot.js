@@ -6,7 +6,8 @@ async function captureScreenshot(url) {
         args: ['--no-sandbox', '--disable-setuid-sandbox'] // Required for Puppeteer on Render
     });
     const page = await browser.newPage();
-    await page.goto(url);
+    await page.goto(url, {waitUntil: 'networkidle0', timeout:60000 });
+    await page.waitForSelector('.webp', { timeout: 60000 });
     const screenshot = await page.screenshot(); // Capture screenshot
     await browser.close();
     return screenshot;
