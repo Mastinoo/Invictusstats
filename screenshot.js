@@ -17,7 +17,7 @@ async function captureScreenshot(url) {
         await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
 
         // Wait until the page has loaded fully
-        await page.goto(url, { waitUntil: 'load' });
+        await page.goto(url, { waitUntil: 'load', timeout: 60000 });
 
         // Log the page content for debugging purposes (first 500 characters)
         const pageContent = await page.content();
