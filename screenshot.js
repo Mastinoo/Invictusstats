@@ -11,7 +11,8 @@ async function captureScreenshot(url) {
         args: ['--no-sandbox', '--disable-setuid-sandbox'] // Required for Puppeteer on Render
     });
     const page = await browser.newPage();
-
+    
+    await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
     // Wait until the network is idle, making sure the page is fully loaded
     await page.goto(url, {waitUntil: 'networkidle0', timeout: 60000});
 
