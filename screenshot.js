@@ -18,7 +18,7 @@ async function captureScreenshot(url) {
 
     console.log("Waiting for page elements...");
     // Wait for a fixed amount of time (5 seconds) before capturing the screenshot
-    await page.waitForTimeout(5000);  // You can adjust the wait time if needed
+    await page.waitFor(5000);  // You can adjust the wait time if needed
 
     // Wait for the widget selector (you may need to adjust this based on your content)
     await page.waitForSelector('.webp', { timeout: 60000 });  // Adjust based on your widget
