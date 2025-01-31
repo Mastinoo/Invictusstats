@@ -24,10 +24,7 @@ async function captureScreenshot(url) {
         console.log('Page content (first 500 chars):', pageContent.slice(0, 500));
 
         // Wait for a more specific element indicating the widget has loaded (adjust based on your widget)
-        await page.waitForSelector('.webp');  // Adjust the class or selector based on your widget
-
-        // Optionally wait for some other indicator, like images or charts, to ensure full loading
-        await page.waitForSelector('img');  // Waiting for at least one image (you can adjust this)
+        await page.waitForSelector('.webp, .slds-table');  // Adjust the class or selector based on your widget
 
         // Capture the screenshot
         const screenshot = await page.screenshot();
