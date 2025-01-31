@@ -15,6 +15,8 @@ async function captureScreenshot(url) {
     // Wait until the network is idle, making sure the page is fully loaded
     await page.goto(url, {waitUntil: 'networkidle0', timeout: 60000});
 
+    console.log("Waiting for page elements...");
+        await page.waitForTimeout(5000);
     // Wait for the widget selector (you may need to adjust this based on your content)
     await page.waitForSelector('.webp', { timeout: 60000 });
 
