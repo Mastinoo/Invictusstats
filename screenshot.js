@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const chromium = require('chromium'); // Import Chromium package
 const express = require('express');
 const app = express();
 
@@ -6,6 +7,7 @@ const app = express();
 async function captureScreenshot(url) {
     const browser = await puppeteer.launch({
         headless: "new",
+        executablePath: chromium.path, // Manually set Chromium path
         args: ['--no-sandbox', '--disable-setuid-sandbox'] // Required for Puppeteer on Render
     });
     const page = await browser.newPage();
