@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const chromium = require('chromium'); // Import Chromium package
 const express = require('express');
 const app = express();
