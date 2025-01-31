@@ -13,23 +13,26 @@ async function captureScreenshot(url) {
         });
 
         const page = await browser.newPage();
-        
+
         await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
 
-        // Wait until the network is idle or page is fully loaded
+        // Wait until the page has loaded fully
         await page.goto(url, { waitUntil: 'load' });
 
         // Log the page content for debugging purposes (first 500 characters)
         const pageContent = await page.content();
         console.log('Page content (first 500 chars):', pageContent.slice(0, 500));
 
-        // Wait for a more general element to ensure the page has loaded fully
-        await page.waitForSelector('body');  // Can change this based on your needs
+        // Wait for a more specific element indicating the widget has loaded (adjust based on your widget)
+        await page.waitForSelector('.webp');  // Adjust the class or selector based on your widget
+
+        // Optionally wait for some other indicator, like images or charts, to ensure full loading
+        await page.waitForSelector('img');  // Waiting for at least one image (you can adjust this)
 
         // Capture the screenshot
         const screenshot = await page.screenshot();
         await browser.close();
-        
+
         return screenshot;
     } catch (error) {
         console.error("Error during screenshot capture:", error);
