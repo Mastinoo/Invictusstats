@@ -22,6 +22,8 @@ async function captureScreenshot(url) {
     return screenshot;
 }
 
+module.exports = { captureScreenshot };  // Ensure correct export
+
 // Route to capture the screenshot and serve it as an image
 app.get('/screenshot', async (req, res) => {
     const url = req.query.url;  // Get the URL passed as a query parameter
