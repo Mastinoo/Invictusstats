@@ -5,7 +5,7 @@ const app = express();
 // Function to capture a screenshot using Puppeteer
 async function captureScreenshot(url) {
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: "new",
         args: ['--no-sandbox', '--disable-setuid-sandbox'] // Required for Puppeteer on Render
     });
     const page = await browser.newPage();
